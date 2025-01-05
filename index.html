@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evxn's Internet Thing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* General Reset */
         * {
@@ -14,116 +13,168 @@
         }
 
         body {
-            font-family: 'Nunito', sans-serif; /* Rounded font */
-            background-color: #000000; /* Black background */
-            color: #f4f7fa; /* Light text color for contrast */
+            font-family: 'Courier New', monospace; /* Monospaced font for terminal look */
+            background-color: #000000; /* Black background to simulate a console */
+            color: #33ff33; /* Green text like an old terminal */
             margin: 0;
             padding: 0;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         header {
-            background-color: #111111; /* Dark background for the header */
-            padding: 40px 20px;
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
             font-size: 36px;
-            font-weight: bold;
-            color: #ffffff;
+            color: #33ff33;
+            text-shadow: 0 0 15px rgba(51, 255, 51, 0.8), 0 0 30px rgba(51, 255, 51, 0.6); /* Glowing text effect */
             margin-bottom: 10px;
+            animation: fadeIn 1s ease-in-out;
         }
 
         header p {
-            color: #bbb;
+            color: #66ff66;
             font-size: 18px;
+            animation: fadeIn 1.2s ease-in-out;
         }
 
         nav {
-            background-color: #111111; /* Dark background for navigation */
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #000000;
+            padding: 10px;
+            text-align: center;
+            border-top: 2px solid #33ff33;
         }
 
         nav a {
-            color: #00c4cc;
+            color: #33ff33;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 18px;
             margin: 0 20px;
-            padding: 10px 15px;
-            border-radius: 30px;
-            background-color: transparent;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         nav a:hover {
-            background-color: #333333;
-            color: #ffffff;
+            color: #66ff66; /* Lighter green on hover */
+            transform: scale(1.1); /* Slight scale-up effect */
         }
 
         .container {
-            padding: 30px 20px;
+            padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         h2 {
             font-size: 28px;
-            color: #ffffff;
+            color: #33ff33;
             margin-bottom: 20px;
             text-align: center;
+            text-shadow: 0 0 10px rgba(51, 255, 51, 0.8); /* Glowing effect for subheaders */
+            animation: fadeIn 1s ease-in-out;
         }
 
         .project {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             margin-bottom: 30px;
-            justify-content: center;
+            text-align: center;
         }
 
-        .project img, .project video {
+        .project img {
             width: 100%;
-            max-width: 500px;
+            max-width: 300px; /* Initially smaller size */
             height: auto;
-            border-radius: 20px;
             margin-top: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(51, 255, 51, 0.8); /* Green glow around image */
         }
 
-        .project img:hover, .project video:hover {
-            transform: scale(1.05);
+        .project img:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+            box-shadow: 0 0 20px rgba(51, 255, 51, 1); /* Brighter green glow on hover */
         }
 
         footer {
-            background-color: #111111;
+            background-color: #000000;
             text-align: center;
-            padding: 20px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-top: 2px solid #33ff33;
         }
 
         footer p {
-            color: #bbb;
+            color: #66ff66;
+            font-size: 14px;
         }
 
         .btn {
             display: inline-block;
-            background-color: #00c4cc;
-            color: white;
-            padding: 12px 30px;
+            background-color: transparent;
+            color: #33ff33;
+            padding: 10px 20px;
             text-decoration: none;
+            border: 1px solid #33ff33;
             font-weight: bold;
-            border-radius: 30px;
-            transition: background-color 0.3s ease;
             margin-top: 20px;
+            text-shadow: 0 0 5px rgba(51, 255, 51, 0.8);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .btn:hover {
-            background-color: #00b3b3;
+            background-color: #33ff33;
+            color: #000000;
+            transform: scale(1.05);
+        }
+
+        /* Cursor Animation */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #33ff33;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { background-color: transparent; }
+        }
+
+        /* Glowing text effect for fadeIn */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enlarged image effect */
+        .enlarged {
+            max-width: 80%; /* Make the image larger */
+            z-index: 10;
+        }
+
+        /* Overlay effect for enlarged image */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay img {
+            max-width: 70%;
+            height: auto;
         }
 
     </style>
@@ -132,52 +183,73 @@
 
 <header>
     <h1>Evxn's Internet Thing</h1>
-    <p>A Creator</p>
+    <p>A Creator <span class="cursor"></span></p>
 </header>
 
 <nav>
-    <a href="#about">About Me</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <a href="#about">about</a>
+    <a href="#projects">projects</a>
+    <a href="#contact">contact</a>
 </nav>
 
 <div class="container" id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm Evxn, a passionate creator. I enjoy working on projects involving what I find interesting.
-         This includes creating music, software, games, videos, and random internet things.
-        This website showcases some of the work I've been doing lately. Feel free to explore!</p>
+    <h2>about me</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+        Hi, I'm Evxn.  
+        I'm a creator focused on building things that I find interesting, from software and games to music and videos. I enjoy exploring new ideas and bringing them to life in different forms.
+        
+        This site is a glimpse into the projects I’m working on right now—some of which are still in the works, and others that are ready for you to check out. Take a look around, and feel free to reach out if something catches your eye.
+    </p>
 </div>
 
 <div class="container" id="projects">
-    <h2>Projects</h2>
+    <h2>projects</h2>
 
     <div class="project">
         <div class="project-item">
-            <h3 style="color: #00c4cc;">Cryptix</h3>
+            <h3>Cryptix</h3>
             <p>Cryptix is a simple, user friendly file encryption and decryption tool built using Chat-GPT and Python.
                 The app uses AES (Advanced Encryption Standard) encryption in CBC (Cipher Block Chaining) mode to securely encrypt and decrypt files.
                 The app also utilizes PBKDF2 (Password-Based Key Derivation Function 2) to derive a secure encryption key from a passphrase provided by the user.
                 You can download the tool, and read more at <a href="https://github.com/x-evxn/Evxns-Github-Repo/tree/main/Cryptix" target="_blank">Evxn's Github Repository.</a> </p>
-            <img src="Crytix app jpg.jpg" alt="Project Image 1">
-        </div>
-
+            <img src="Crytix app jpg.jpg" alt="Project Image 1" onclick="enlargeImage(this)">
         </div>
     </div>
 </div>
 
 <div class="container" id="contact">
-    <h2>Contact</h2>
-    <p>Feel free to reach out to me via email at <a href="evxn.mx25@gmail.com" style="color: #00c4cc;">evxn.mx25@gmail.com</a> or follow me on social media:</p>
+    <h2>contact</h2>
+    <p>Feel free to reach out to me via email at <a href="evxn.mx25@gmail.com">evxn.mx25@gmail.com</a> or follow me on social media:</p>
     <ul style="list-style: none; text-align: center;">
-        <li><a href="https://github.com/x-evxn" target="_blank" style="color: #00c4cc;">GitHub</a></li>
-        <li><a href="https://www.reddit.com/user/ManufacturerOk8420/" target="_blank" style="color: #00c4cc;">Reddit</a></li>
+        <li><a href="https://github.com/x-evxn" target="_blank">GitHub</a></li>
+        <li><a href="https://www.reddit.com/user/ManufacturerOk8420/" target="_blank">Reddit</a></li>
     </ul>
-    <a href="mailto:evxn.mx25@gmail.com" class="btn">Email Me</a>
+    <a href="mailto:evxn.mx25@gmail.com" class="btn">email me</a>
 </div>
 
 <footer>
     <p>&copy; 2025 Evxn. "All rights reserved".</p>
 </footer>
+
+<!-- Overlay to display the enlarged image -->
+<div class="overlay" id="overlay" onclick="closeImage()">
+    <img id="enlargedImage" src="" alt="Enlarged Image">
+</div>
+
+<script>
+    function enlargeImage(imgElement) {
+        var overlay = document.getElementById('overlay');
+        var enlargedImage = document.getElementById('enlargedImage');
+        
+        enlargedImage.src = imgElement.src; // Set the image source
+        overlay.style.display = 'flex'; // Show the overlay
+    }
+
+    function closeImage() {
+        var overlay = document.getElementById('overlay');
+        overlay.style.display = 'none'; // Hide the overlay when clicked
+    }
+</script>
 
 </body>
 </html>
